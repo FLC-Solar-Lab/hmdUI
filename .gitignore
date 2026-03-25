@@ -1,0 +1,55 @@
+# --- Godot Core ---
+.godot/
+*.import/
+*.tmp
+*.uid
+
+# --- Export/Build Artifacts ---
+# It's better to ignore the entire build folder
+build/
+dist/
+bin/
+
+# Specific export extensions
+*.64
+*.x86_64
+*.x86
+*.exe
+*.apple
+*.ipa
+*.apk
+*.ios
+*.uwp
+
+# --- macOS Specific (Tyler's MacBook) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Python / SolarSimAPI Integration ---
+# Since you often run Python APIs alongside Godot
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+nohup.out
+
+# --- Editor & IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Mono / C# (If applicable) ---
+.mono/
+project.lock.json
+*.csproj
+*.sln
+*.obj
