@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmujgeipbfgif"]
+[gd_scene load_steps=5 format=3 uid="uid://cum1wt7gii5f5"]
 
 [ext_resource type="Script" path="res://ui/UIRoot.gd" id="1_jaas0"]
 [ext_resource type="Script" path="res://ui/SpatialResolver.gd" id="2_vh4x1"]
 [ext_resource type="Script" path="res://ui/InteractionModel.gd" id="3_vw8sj"]
 [ext_resource type="Script" path="res://ui/hmd_ui.gd" id="4_ubpoh"]
-[ext_resource type="Script" path="res://noodles_server/vrpn/vrpn_link.gd" id="5_wghm3"]
 
 [node name="UIRoot" type="Node3D"]
 script = ExtResource("1_jaas0")
@@ -22,13 +21,3 @@ double_press_interval = 0.3
 
 [node name="hmdUI" type="Node3D" parent="."]
 script = ExtResource("4_ubpoh")
-
-[node name="VRPNLink" type="Node" parent="hmdUI"]
-script = ExtResource("5_wghm3")
-vrpn_name = "UI"
-vrpn_server = "10.16.10.10"
-scale_override = 0.5
-tweak_rx = -3.435
-tweak_ry = 30.229
-tweak_rz = 4.122
-average_over_frames = 100
