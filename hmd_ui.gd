@@ -17,7 +17,7 @@ var _string_status_label: Node
 
 const UI_ROOT_NODE_NAME := "UIDefinition"
 const DEFAULT_UI_DEFINITION_PATH := "res://hmd_ui_definition.gd"
-const DEFAULT_UI_DEFINITION: Script = preload("res://ui/hmd_ui_definition.gd")
+const DEFAULT_UI_DEFINITION: Script = preload("res://hmd_ui_definition.gd")
 
 @export_file("*.gd") var ui_definition_path: String = DEFAULT_UI_DEFINITION_PATH
 var _ui_layout: Dictionary = {}
