@@ -1,5 +1,44 @@
-# hmdUI Setup and Integration Guide
+# hmdUI - A Mixed Reality Virtual UI
 
+---
+
+# Overview
+
+`hmdUI` is a lightweight 3D UI system for Godot mixed-reality simulations. It builds runtime interfaces from a UI definition, organizing panels and controls into a structured scene hierarchy that can be attached to your simulation and driven through a shared interaction pipeline.
+
+### Hierarchy
+
+```text
+UIRoot
+├── SpacialResolver ------------------------------ Resolves 3D raycasts and returns the hovered UIWidget.
+├── InteractionModel ----------------------------- Tracks press, release, click, and double-click state per sender.
+└── hmdUI ---------------------------------------- Runtime UI builder and signal source for the generated interface.
+    └── UIDefinition ----------------------------- Auto-generated container that holds all runtime-created panels.
+        ├── UIPanel ------------------------------ A panel container that lays out its child items in a grid.
+        │   ├── PanelTitle (optional) ------------ Display-only panel heading created when a title is defined.
+        │   ├── PanelBG -------------------------- Background sprite sized to fit the panel contents.
+        │   ├── UI item -------------------------- A panel child participating in layout.
+        │   │   ├── UIWidget --------------------- Base interactive element type used for hit detection and events.
+        │   │   └── Compound item ---------------- Multi-node control such as UIStepper, which contains widgets.
+        │   └── ...
+        ├── UIPanel
+        └── ...
+```
+
+### Terminology
+
+- `Root`: A top-level coordinating node. `UIRoot` connects the resolver and interaction model, while `hmdUI` builds and emits the runtime UI.
+- `Panel`: A `UIPanel` container that groups related controls and lays them out visually.
+- `Item`: Any child node that a `UIPanel` places in its grid. Items can be interactive controls, compound controls, labels, or spacers.
+- `Widget`: A node derived from `UIWidget`. Widgets are the fundamental hit-testable UI elements that receive press/click events.
+- `Component`: A general documentation term for any reusable UI building block. In this repo, it is safest to use it broadly and prefer `panel`, `item`, or `widget` when you want to be specific.
+
+In practice every `widget` is an `item` when it is placed directly in a panel, but not every `item` is a `widget`. For example, `UIButton`, `UISlider`, and `UIDropdown` are widgets, while `UIStepper` is a compound item that contains multiple widgets.
+
+---
+---
+
+# Setup and Integration Guide
 This guide covers how to set up, configure, and integrate the `hmdUI` submodule into your Godot mixed-reality simulation.
 
 ---
