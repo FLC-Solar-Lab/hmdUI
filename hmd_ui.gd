@@ -54,21 +54,21 @@ const COMPONENT_SIZES = {
 }
 
 ## Textures
-const TEX_PANEL 				:= preload("res://assets/ui/ui_panel_dark.png")
-const TEX_BTN_STYLE1 			:= preload("res://assets/ui/ui_btn_c1.png")
-const TEX_BTN_STYLE1_PRESSED 	:= preload("res://assets/ui/ui_btn_c1_p.png")
-const TEX_BTN_STYLE2 			:= preload("res://assets/ui/ui_btn_c2.png")
-const TEX_BTN_STYLE2_PRESSED 	:= preload("res://assets/ui/ui_btn_c2_p.png")
-const TEX_BTN_STYLE3 			:= preload("res://assets/ui/ui_btn_c3.png")
-const TEX_BTN_STYLE3_PRESSED 	:= preload("res://assets/ui/ui_btn_c3_p.png")
-const TEX_BTN_STYLE4 			:= preload("res://assets/ui/ui_btn_c4.png")
-const TEX_BTN_STYLE4_PRESSED 	:= preload("res://assets/ui/ui_btn_c4_p.png")
-const TEX_SLIDER_BAR 	:= preload("res://assets/ui/ui_slider_bar.png")
-const TEX_SLIDER_LOW 	:= preload("res://assets/ui/ui_slider_low.png")
-const TEX_SLIDER_MID 	:= preload("res://assets/ui/ui_slider_mid.png")
-const TEX_SLIDER_HIGH 	:= preload("res://assets/ui/ui_slider_high.png")
-#const TEX_IMAGE 		:= preload("res://assets/ui/cat_image.jpg")
-const TEX_DD_ARROW 		:= preload("res://assets/dropdown_arrow_icon.png")
+const TEX_PANEL 				:= preload("res://ui/assets/ui_panel_dark.png")
+const TEX_BTN_STYLE1 			:= preload("res://ui/assets/ui_btn_c1.png")
+const TEX_BTN_STYLE1_PRESSED 	:= preload("res://ui/assets/ui_btn_c1_p.png")
+const TEX_BTN_STYLE2 			:= preload("res://ui/assets/ui_btn_c2.png")
+const TEX_BTN_STYLE2_PRESSED 	:= preload("res://ui/assets/ui_btn_c2_p.png")
+const TEX_BTN_STYLE3 			:= preload("res://ui/assets/ui_btn_c3.png")
+const TEX_BTN_STYLE3_PRESSED 	:= preload("res://ui/assets/ui_btn_c3_p.png")
+const TEX_BTN_STYLE4 			:= preload("res://ui/assets/ui_btn_c4.png")
+const TEX_BTN_STYLE4_PRESSED 	:= preload("res://ui/assets/ui_btn_c4_p.png")
+const TEX_SLIDER_BAR 	:= preload("res://ui/assets/ui_slider_bar.png")
+const TEX_SLIDER_LOW 	:= preload("res://ui/assets/ui_slider_low.png")
+const TEX_SLIDER_MID 	:= preload("res://ui/assets/ui_slider_mid.png")
+const TEX_SLIDER_HIGH 	:= preload("res://ui/assets/ui_slider_high.png")
+#const TEX_IMAGE 		:= preload("res://ui/assets/cat_image.jpg")
+const TEX_DD_ARROW 		:= preload("res://ui/assets/dropdown_arrow_icon.png")
 
 const PANEL_TITLE_FONT_SIZE := 9
 

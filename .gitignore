@@ -1,6 +1,6 @@
 # --- Godot Core ---
-.godot/
-*.import/
+.godot
+*.import
 *.tmp
 *.uid
 

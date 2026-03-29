@@ -10,7 +10,7 @@ class_name Grabbable
 @export var bumper_is_pressed_path: Node
 @export var bumper_is_released_path: Node
 # optionally add more grabbables, defaults to the node script is attached to
-@export var grabbables: = [self]   # MUST BE StaticBody3D
+@export var grabbables: Array[Node3D] = [self]   # MUST BE StaticBody3D
 # if enabled: object with face cleint's ray when it is grabbed, allowing for rotation
 @export var allow_roations = true
 
