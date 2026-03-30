@@ -12,6 +12,7 @@ var button_actions: Dictionary = {}
 var _ui_root: Node3D
 var _panel_registry: Dictionary = {}
 var _widget_registry: Dictionary = {}
+var _param_registry: Dictionary = {}
 @export var ui_scale: float = 1.0
 var _string_status_label: Node
 
@@ -160,6 +161,7 @@ func _build_ui() -> void:
 
 	_panel_registry.clear()
 	_widget_registry.clear()
+	_param_registry.clear()
 
 	_ui_root = Node3D.new()
 	_ui_root.name = UI_ROOT_NODE_NAME
@@ -449,6 +451,7 @@ func _bind_slider(slider_node: Node, label_node: Node, is_time: bool, param: Str
 	if slider_node == null or not (slider_node is UISlider):
 		return
 	var slider: UISlider = slider_node
+	_register_param_widget(param, slider)
 	var on_slider_update = func(_sender_id: int, value: float) -> void:
 		if is_time:
 			UIWidget.set_label_text(label_node, UIStepper.format_time_label(value))
@@ -466,6 +469,7 @@ func _bind_stepper(stepper_node: Node, param: String) -> void:
 	if stepper_node == null or not (stepper_node is UIStepper):
 		return
 	var stepper: UIStepper = stepper_node
+	_register_param_widget(param, stepper)
 	stepper.bind_param(param, func(value: Variant) -> void:
 		_emit_parameter_change(param, value)
 	)
@@ -501,14 +505,42 @@ func _update_string_status_label(active_index: int) -> void:
 func _bind_dropdown(dropdown_node: Node, param: String, option_values: Dictionary) -> void:
 	if dropdown_node and dropdown_node is UIDropdown:
 		var dropdown: UIDropdown = dropdown_node
+		_register_param_widget(param, dropdown)
 		dropdown.selection_committed.connect(func(_sender_id: int, index: int, text: String) -> void:
 			if param != "":
-				var value: Variant = option_values.get(text, index)
+				var value: Variant = option_values.get(text, text)
 				_emit_parameter_change(param, value)
 		)
 
 func _emit_parameter_change(param: String, value: Variant) -> void:
 	parameter_changed.emit(param, value)
+
+func _register_param_widget(param: String, widget: Node) -> void:
+	if param == "" or widget == null:
+		return
+	_param_registry[param] = widget
+
+func sync_param(param: String, value: Variant) -> void:
+	var widget: Variant = _param_registry.get(param, null)
+	if widget == null:
+		return
+
+	if widget is UIStepper:
+		(widget as UIStepper).sync_value(value, false)
+		return
+
+	if widget is UISlider and (value is int or value is float):
+		(widget as UISlider).set_value(float(value))
+		return
+
+	if widget is UIDropdown:
+		var dropdown: UIDropdown = widget
+		if value is int:
+			dropdown.set_selected_index(value, -1, false)
+			return
+		var text_index := dropdown.items.find(str(value))
+		if text_index >= 0:
+			dropdown.set_selected_index(text_index, -1, false)
 
 ## Button Actions
 func handle_button_press(button_pressed: String) -> void:

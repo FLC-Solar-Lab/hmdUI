@@ -140,6 +140,16 @@ func bind_param(param: String, on_param: Callable) -> void:
 	# Apply immediately so bound labels (for example temp) are initialized.
 	_apply_bound_param(slider.value, false)
 
+func sync_value(value: Variant, emit_signal: bool = false) -> void:
+	var slider = _resolve_slider()
+	if slider == null:
+		return
+	if not (value is int or value is float):
+		return
+	slider.set_value(float(value))
+	_apply_bound_param(slider.value, emit_signal)
+	_refresh_label()
+
 static func normalize_slider_value(slider: UISlider, value: float) -> float:
 	if slider.max_value <= slider.min_value:
 		return 0.0
