@@ -1,4 +1,5 @@
 # hmdUI - A Mixed Reality Virtual UI
+### Author: Lincoln Sheer
 
 ---
 
