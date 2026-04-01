@@ -16,6 +16,10 @@ signal value_committed(sender_id: int, value: float)
 
 @onready var _handle: Node3D = _resolve_handle()
 
+func _ready() -> void:
+	_handle = _resolve_handle()
+	_update_handle()
+
 static func create_slider(
 	name: String,
 	label_text: String,
@@ -98,7 +102,9 @@ func on_released(sender_id: int) -> void:
 
 func _update_handle() -> void:
 	if not is_instance_valid(_handle):
-		return
+		_handle = _resolve_handle()
+		if not is_instance_valid(_handle):
+			return
 	var t = 0.0
 	if max_value > min_value:
 		t = (value - min_value) / (max_value - min_value)
