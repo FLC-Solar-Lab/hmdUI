@@ -44,7 +44,7 @@ This guide covers how to set up, configure, and integrate the `hmdUI` submodule 
 
 ---
 
-## 1. Configure the UI Definitions (`ui_definitions.gd`)
+## 1. Configure the UI Definitions (`hmd_ui_definition.gd`)
 
 The framework relies on a configuration script to build the interface dynamically. Instead of manually placing nodes, you define the layout and data bindings in a single script.
 
